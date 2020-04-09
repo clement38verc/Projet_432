@@ -51,34 +51,34 @@ def crea_cnf(grille,cnf):
     clauses=0
     for i in range(len(grille)):
         for j in range(len(grille)):
-            if (grille[i][j]==0):
+            if (grille[i,j]==0):
                 ch=ch+cnf.get("0")
                 clauses+=1
-            if (grille[i][j]==1):
+            if (grille[i,j]==1):
                 ch=ch+cnf.get("1")
                 clauses+=118
-            if (grille[i][j]==2):
+            if (grille[i,j]==2):
                 ch=ch+cnf.get("2")
                 clauses+=955
-            if (grille[i][j]==3):
+            if (grille[i,j]==3):
                 ch=ch+cnf.get("3")
                 clauses+=4243
-            if (grille[i][j]==4):
+            if (grille[i,j]==4):
                 ch=ch+cnf.get("4")
                 clauses+=9010
-            if (grille[i][j]==5):
+            if (grille[i,j]==5):
                 ch=ch+cnf.get("5")
                 clauses+=9010
-            if (grille[i][j]==6):
+            if (grille[i,j]==6):
                 ch=ch+cnf.get("6")
                 clauses+=4243
-            if (grille[i][j]==7):
+            if (grille[i,j]==7):
                 ch=ch+cnf.get("7")
                 clauses+=955
-            if (grille[i][j]==8):
+            if (grille[i,j]==8):
                 ch=ch+cnf.get("8")
                 clauses+=118
-            if (grille[i][j]==9):
+            if (grille[i,j]==9):
                 ch=ch+cnf.get("9")
                 clauses+=1
             if ((i!=len(grille)-1) or (j!=len(grille)-1)):
