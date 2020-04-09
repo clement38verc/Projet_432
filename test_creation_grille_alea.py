@@ -1,11 +1,12 @@
 # A MODIFIER
-##### ICI JE CREE DEUX GRILLES, LA PREMIERE AVEC DES VALEURS ALEATOIRES PAS FORCEMENT RESOLVABLE MAIS COHERENTE ET LAUTRE QUE DES 1 #####
+##### ICI JE CREER DEUX GRILLES, LA PREMIERE AVEC DES VALEURS ALEATOIRES PAS FORCEMENT RESOLVABLE MAIS COHERENTE ET LAUTRE QUE DES 1 #####
 
 
 
 
 ##INIT TKINTER
 
+import numpy as np
 import random
 from tkinter import *
 from math import sqrt
@@ -61,15 +62,15 @@ def list_possible(i,j,nb):
 
 
 
-#creation du centre de la grille
+#creation du centre de la grille 
 
-grille3=[[random.choice(list_possible(i,j,NB_DE_CASES)) for j in range(NB_DE_CASES)] for i in range(NB_DE_CASES)]
+grille3=np.array([[random.choice(list_possible(i,j,NB_DE_CASES)) for j in range(NB_DE_CASES)] for i in range(NB_DE_CASES)])
 print (grille3)
 for i in range (NB_DE_CASES):
     for j in range (NB_DE_CASES):
 
 
-        can.create_text(((PAS)/2)+((PAS)*i),(((PAS)/2)+(PAS)*j),text=grille3[i][j])
+        can.create_text(((PAS)/2)+((PAS)*i),(((PAS)/2)+(PAS)*j),text=grille3[j][i])
 can.create_rectangle(1.5,1.5,COTE,COTE)
 
 
@@ -87,7 +88,7 @@ while (b<=NB_DE_CASES):
     b=b+1
 
 
-
+  
 grille=[[0 for t in range(NB_DE_CASES)] for v in range(NB_DE_CASES)]
 grille4=[[0 for t in range(NB_DE_CASES)] for v in range(NB_DE_CASES)]
 
@@ -110,16 +111,16 @@ for c in range (NB_DE_CASES):
   #              for b in range (l-1,l+2):
    #                 grille4[a][b]=0
     #                print(c,l)
-
-
-
+                
+            
+                    
 for c in range (NB_DE_CASES):
     for l in range (NB_DE_CASES):
         if grille4[c][l]==1:
                 can.create_rectangle(PAS*c+DECALAGE+COTE,PAS*l,PAS*c+DECALAGE+COTE+PAS,PAS*l+PAS,fill='black')
         else :
                 can.create_rectangle(PAS*c+DECALAGE+COTE,PAS*l,PAS*c+DECALAGE+COTE+PAS,PAS*l+PAS,fill='white')
-
+        
 can.create_rectangle((COTE + DECALAGE),1.5,2*(MARGE+COTE)+DECALAGE,COTE)
 
 
