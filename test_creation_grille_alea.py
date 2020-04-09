@@ -62,12 +62,22 @@ def grille():
     can.create_rectangle(1.5,1.5,COTE,COTE)
 
 
+
 #creation du centre de la grille
+grille3=np.array([[random.choice(list_possible(i,j,NB_DE_CASES)) for j in range(NB_DE_CASES)] for i in range(NB_DE_CASES)])
+print (grille3)
+for i in range (NB_DE_CASES):
+    for j in range (NB_DE_CASES):
+
 
     grille3=np.array([[random.choice(list_possible(i,j,NB_DE_CASES)) for j in range(NB_DE_CASES)] for i in range(NB_DE_CASES)])
     print (grille3)
     for i in range (NB_DE_CASES):
         for j in range (NB_DE_CASES):
+
+
+        can.create_text(((PAS)/2)+((PAS)*i),(((PAS)/2)+(PAS)*j),text=grille3[j][i])
+can.create_rectangle(1.5,1.5,COTE,COTE)
 
 
             can.create_text(((PAS)/2)+((PAS)*i),(((PAS)/2)+(PAS)*j),text=grille3[j][i])
