@@ -5,6 +5,7 @@ pos=['a','b','c','d','e','f','g','h','i','C1', 'C2', 'C3', 'C4', 'C5', 'C6', 'C7
 def crea_dimacs(nbclaus,c):
     d=open("Dimacs.cnf", "w")
     d.write("p cnf 135 "+str(nbclaus)+"\n")
+    n=0
     for el in c:
         if (el == "."):
             d.write(" 0\n")
@@ -12,10 +13,31 @@ def crea_dimacs(nbclaus,c):
             d.write(" ")
         if (el=="-"):
             d.write(el)
-        n=1
-        for k in pos:
-            if (el==k):
-                d.write(str(n))
-            n+=1
+        if (el=="a"):
+            d.write(str(1))
+        if (el=="b"):
+            d.write(str(2))
+        if (el=="c"):
+            d.write(str(3))
+        if (el=="d"):
+            d.write(str(4))
+        if (el=="e"):
+            d.write(str(5))
+        if (el=="f"):
+            d.write(str(6))
+        if (el=="g"):
+            d.write(str(7))
+        if (el=="h"):
+            d.write(str(8))
+        if (el=="i"):
+            d.write(str(9))
+        if (el=="C"):
+            k=n
+            ch=""
+            while ((c[k]!=")") and (c[k]!="+")):
+                ch=ch+c[k]
+                k+=1
+            d.write(str(pos.index(ch)+1))
+        n+=1
     d.write(" 0")
     d.close()

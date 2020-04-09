@@ -46,11 +46,11 @@ def dnf_cnf(dnf):
     for i in range(1,9):
         k=0
         ch="("
-        ch1="(C1"
+        ch1="C1"
         for el in dnf[i]:
             if (el=="+"):
                 k+=1
-                ch1=ch1+"."+cas[k]
+                ch1=ch1+"+"+cas[k]
             if (el=="a"):
                 ch=ch+el+"+-"+cas[k]+").("
             if (el=="b"):
@@ -72,52 +72,54 @@ def dnf_cnf(dnf):
             if (el=="-"):
                 ch=ch+"-"
         k+=1
-        ch=ch+")."+ch1+")."
+        ch=ch+ch1+")."
         for m in range(k):
             for n in range(m+1,k):
                 ch=ch+"(-"+cas[m]+"+-"+cas[n]+")"
-                if ((m!=8) or (n!=9)):
+                if ((m!=k-2) or (n!=k-1)):
                     ch=ch+"."
         cnf[str(i)]=ch
     cnf["9"]=dnf[9]
     return cnf
 
-def crea_cnf(grille,cnf):
+def crea_cnf(grille):
+    dnf=crea_dnf()
+    cnf=dnf_cnf(dnf)
     ch=""
     clauses=0
     for i in range(len(grille)):
         for j in range(len(grille)):
-            if (grille[i,j]==0):
+            if (grille[i,j]=='0'):
                 ch=ch+cnf.get("0")
                 clauses+=1
-            if (grille[i,j]==1):
+            if (grille[i,j]=='1'):
                 ch=ch+cnf.get("1")
                 clauses+=118
-            if (grille[i,j]==2):
+            if (grille[i,j]=='2'):
                 ch=ch+cnf.get("2")
                 clauses+=955
-            if (grille[i,j]==3):
+            if (grille[i,j]=='3'):
                 ch=ch+cnf.get("3")
                 clauses+=4243
-            if (grille[i,j]==4):
+            if (grille[i,j]=='4'):
                 ch=ch+cnf.get("4")
                 clauses+=9010
-            if (grille[i,j]==5):
+            if (grille[i,j]=='5'):
                 ch=ch+cnf.get("5")
                 clauses+=9010
-            if (grille[i,j]==6):
+            if (grille[i,j]=='6'):
                 ch=ch+cnf.get("6")
                 clauses+=4243
-            if (grille[i,j]==7):
+            if (grille[i,j]=='7'):
                 ch=ch+cnf.get("7")
                 clauses+=955
-            if (grille[i,j]==8):
+            if (grille[i,j]=='8'):
                 ch=ch+cnf.get("8")
                 clauses+=118
-            if (grille[i,j]==9):
+            if (grille[i,j]=='9'):
                 ch=ch+cnf.get("9")
                 clauses+=1
-            if ((i!=len(grille)-1) or (j!=len(grille)-1)):
+            if (((i!=len(grille)-1) or (j!=len(grille)-1)) and (grille[i,j]!=" ")):
                 ch=ch+"."
     return (ch,clauses)
 
