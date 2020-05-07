@@ -39,12 +39,12 @@ def grille():
     for i in range(1,NB_DE_CASES_MAX+1):
         nbr_cases_possible.insert(i,i)
 
-    print (nbr_cases_possible)
+   # print (nbr_cases_possible)
 
-#NB_DE_CASES=random.choice(nbr_cases_possible)
-    NB_DE_CASES=15
+    NB_DE_CASES=random.choice(nbr_cases_possible)
+    #NB_DE_CASES=15
 
-    print (NB_DE_CASES)
+   # print (NB_DE_CASES)
 
     PAS= COTE/NB_DE_CASES
 
@@ -64,22 +64,10 @@ def grille():
 
 
 #creation du centre de la grille
-grille3=np.array([[random.choice(list_possible(i,j,NB_DE_CASES)) for j in range(NB_DE_CASES)] for i in range(NB_DE_CASES)])
-print (grille3)
-for i in range (NB_DE_CASES):
-    for j in range (NB_DE_CASES):
-
-
     grille3=np.array([[random.choice(list_possible(i,j,NB_DE_CASES)) for j in range(NB_DE_CASES)] for i in range(NB_DE_CASES)])
     print (grille3)
     for i in range (NB_DE_CASES):
         for j in range (NB_DE_CASES):
-
-
-        can.create_text(((PAS)/2)+((PAS)*i),(((PAS)/2)+(PAS)*j),text=grille3[j][i])
-can.create_rectangle(1.5,1.5,COTE,COTE)
-
-
             can.create_text(((PAS)/2)+((PAS)*i),(((PAS)/2)+(PAS)*j),text=grille3[j][i])
     can.create_rectangle(1.5,1.5,COTE,COTE)
 
@@ -103,7 +91,7 @@ can.create_rectangle(1.5,1.5,COTE,COTE)
     grille4=[[0 for t in range(NB_DE_CASES)] for v in range(NB_DE_CASES)]
 
 
-
+    taille=NB_DE_CASES
 
     for c in range (NB_DE_CASES):
         for l in range (NB_DE_CASES):
@@ -133,9 +121,5 @@ can.create_rectangle(1.5,1.5,COTE,COTE)
 
     can.create_rectangle((COTE + DECALAGE),1.5,2*(MARGE+COTE)+DECALAGE,COTE)
 
-
     fen.mainloop()
-
-    return grille3
-
-
+    return (grille3,taille)
